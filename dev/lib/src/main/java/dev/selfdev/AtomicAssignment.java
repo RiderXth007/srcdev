@@ -12,6 +12,7 @@ public class AtomicAssignment implements Runnable {
 	public void run() {
 		for (int i = 0; i < 10; i++) {
 			Map<String, String> currConfig = configuration;
+			System.out.println("In Run Executing thread " + Thread.currentThread().getName());
 			System.out.println("configuration in run method  = " + currConfig.toString());
 			String value1 = currConfig.get("key-1");
 			String value2 = currConfig.get("key-2");
@@ -34,6 +35,7 @@ public class AtomicAssignment implements Runnable {
 		newConfig.put("key-2", sdf.format(now));
 		newConfig.put("key-3", sdf.format(now));
 		configuration = newConfig;
+		System.out.println("In readConfig Executing thread " + Thread.currentThread().getName());
 		System.out.println("configuration in read method = " + configuration.toString());
 	}
 
